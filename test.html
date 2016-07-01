@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function setTab(m, n) {
+				//				var tli = document.getElementById("leftmenu" + m).getElementsByTagName("li");
+				//				var mli = document.getElementById("mcont" + m).getElementsByTagName("ul");
+				//				for (i = 0; i < tli.length; i++) {
+				//					tli[i].className = i == n ? "hover" : "";
+				//					mli[i].style.display = i == n ? "block" : "none";
+				var mli = $("#mcont0 li")
+					//				}
+		</script>
+		<style type="text/css">
+			.aa {
+				width: 200px;
+				float: left;
+			}
+			
+			.aa li {
+				padding: 5px;
+				background: #ff0000;
+				cursor: pointer;
+			}
+			
+			.bb {
+				width: 700px;
+				float: left;
+				background: #00ff00;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aa">
+			<ul id="leftmenu0">
+				<li class="hover" onclick="setTab(0,0)">操作流程</li>
+				<li onclick="setTab(0,1)">付款方式</li>
+				<li onclick="setTab(0,2)">免责声明</li>
+				<li onclick="setTab(0,3)">隐私声明</li>
+			</ul>
+		</div>
+		<div id="mcont0" class="bb">
+			<ul class="block" style="display: block">1111111111</ul>
+			<ul class="block" style="display: none">222222222</ul>
+			<ul class="block" style="display: none">333333333</ul>
+			<ul class="block" style="display: none">4444444444</ul>
+		</div>
+	</body>
+
+</html>
