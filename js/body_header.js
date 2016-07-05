@@ -30,7 +30,7 @@ document.writeln("                    </a>");
 document.writeln("                    ");
 document.writeln("                </div>");
 document.writeln("                <div class=\"collapse navbar-collapse\">");
-document.writeln("                    <ul class=\"nav navbar-nav navbar-right\">");
+document.writeln("                    <ul id=\"navbar\"  class=\"nav navbar-nav navbar-right\">");
 document.writeln("                        <li class=\"active\"><a href=\"index.html\">主页</a></li>");
 document.writeln("                        <li><a href=\"godlibrary.html\">GodLibrary</a></li>");
 document.writeln("                        <li class=\"dropdown\"><a href=\"#\">Pages <i class=\"fa fa-angle-down\"></i></a>");

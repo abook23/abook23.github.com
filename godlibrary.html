@@ -94,8 +94,19 @@
 				//testEditor.hide();
 				testEditor.previewing(); //md 编辑 隐藏
 				$("#li1").trigger("click"); //自动触发事件
-
 			}
+		</script>
+		<!--
+        	作者：abook23@163.com
+        	时间：2016-07-05
+        	描述：选择的是那个标题，最上边 菜单
+        -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var li = $("#navbar").children();//id = navbar 的儿子
+				li.attr("class", null);
+				li.eq(1).attr("class", "active");//li.eq(1) 儿子里面的 2儿子
+			});
 		</script>
 	</body>
 
