@@ -1,5 +1,5 @@
 ###4文件下载
-![](https://github.com/abook23/GodLibrary/blob/master/files/imags/downloadDialog.png)
+![](images/downloadDialog.png)
 ```java
    String fileName = url.substring(url.lastIndexOf("/") + 1);
    DownloadDialog downloadDialog = DownloadDialog.newInstance(url, "/DownLoad", fileName);
