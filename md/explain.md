@@ -22,3 +22,5 @@ aar 引用 记得添加第三方引用
     compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'//apache http
     compile 'org.apache.httpcomponents:httpmime:4.5.2'//上传进度需要的包
 ```
+
+![](images/20160706112259.png)
