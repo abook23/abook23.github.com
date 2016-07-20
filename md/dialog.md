@@ -40,6 +40,7 @@
 
 
 ##下载弹框
+![](images/downloadDialog.png)
 ```xml
 	在AndroidManifest.xml 添加 service
 	<service android:name=".service.DownloadService"/>
