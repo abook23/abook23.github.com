@@ -1,32 +1,65 @@
-#3http网络请求
+#http网络请求
 
-##GET
+
+##同步请求
+###GET
 ```java
 HttpInfo httpInfo = HttpUtils.get("http://news.baidu.com/ns?cl=2&rn=20&tn=news&word=豌豆荚%20开发者");
 ```
 
-##POST
+###POST
 ```java
-方式1
 HashMap<String, Object> hashMap = new HashMap<>();
 hashMap.put("from", "bdwz");
 HttpInfo httpInfo = HttpUtils.post("https://www.baidu.com/", hashMap);
 ```
 
 ###异步请求
-####Thread异步请求
+方式1
 ```java
-    private void http_0(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                HttpInfo httpInfo = HttpUtils.get("url");
-                
-                HttpInfo httpInfo2 = HttpUtils.post("url",new HashMap<String, Object>());
-                
-            }
-        }).start();
+    @Override
+    public void login(UserInfo userInfo, HttpRequestListener<RootBean> listener) {
+        HttpThreadUtils.post(ServiceURL.login)
+                .addParams("userName", userInfo.getName())
+                .addParams("password", userInfo.getUserId())
+                .setHttpRequestListener(RootBean.class, listener)
+                .execute();
     }
+```
+方式2
+```java
+    @Override
+    public void register(UserInfo userInfo, HttpRequestListener<UserInfo> listener) {
+        HttpThreadPool<UserInfo> httpThreadPool = new HttpThreadPool<UserInfo>() {
+            @Override
+            protected UserInfo doInBackground(String result) {
+                RootBean rootBean = getRootBean(result);//统一处理底层
+                UserInfo u = JsonUtils.jsonToBean(rootBean.getContent(), UserInfo.class);
+                return u;
+            }
+        };
+        httpThreadPool.post(ServiceURL.login)
+                .addParams("userName", userInfo.getName())
+                .addParams("password", userInfo.getUserId())
+                .setHttpRequestListener(listener)
+                .execute();
+    }
+```
+方式三
+```java
+        new AsyncThreadPool<String, Integer, UserInfo>() {
+            @Override
+            protected UserInfo doInBackground(String... params) {
+                HttpInfo httpInfo = HttpUtils.get("");
+                HttpUtils.post("", null);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(UserInfo userInfo) {
+                super.onPostExecute(userInfo);
+            }
+        }.execute();
 ```
 ####自定义线程池+回调 HttpThreadPool<T>
 ```java
